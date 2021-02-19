@@ -10,10 +10,8 @@ def pri(n):
       no_primos.append(j)
   return primos
 
-Skip to content
-Sign up
-load-the-code
-/
+
+
 #trigonometry-graph-G
  
 import numpy as np
