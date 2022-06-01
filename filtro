@@ -1,0 +1,11 @@
+#include<iostream.h)
+#include<studio.h)
+
+using namespace std;
+int main(){
+  int a=8,
+  int b=10;
+  for(i=1;b<10;i++){
+    
+  }
+}
