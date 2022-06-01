@@ -1,0 +1,3 @@
+const thisIsAConst = 15
+constObj.a = 'a'
+console.log(mutable)
