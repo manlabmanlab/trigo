@@ -1,0 +1,9 @@
+#include <iostream.h>
+#include <stdio.h>
+#include <conio.h>
+int main(){
+  int e=128;
+  printf(\n %d,e);
+  return 0;
+}
+  
