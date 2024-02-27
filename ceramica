@@ -1,6 +1,49 @@
 #include <iostream.h>
 #include <stdio.h>
 #include <conio.h>
+avr/io.h
+led.h
+void initializar_USART(void);
+unsigned char leer_USART(void);
+void enviar_caracter_por USART(unsigned char);
+void enviar_cadena_por USART(unsigned char *);
+void PC_LCD(void);
+void inicializar_modo_SLEEP(void); //OPTIONAL PARA ESTA PRACTICA
+void inicializar_USART(void){
+  CLKPR=(1<<CLKPCE);
+  CLKPR=(1<<CLKPS1);
+  UBRR0H=0;
+  UBRR0L=12;
+  UCSR0A=(1<<U2X0);
+  UCSR0C=(1<<UCSZ01)|(1<<UCSZ00);
+  UCSR0B=(1<<RXEN0)|(1<<TXEN0)|(1<<RXCIE0);
+}
+
+unsigned char leer_USART(){
+  return UDR0;
+}
+void enviar_caracter_por_USART(unsigned char caracter){
+  int espera=0;
+  UDR0=caracter;
+  if(SREG&(1<<SREG_I)){
+    while(!(UCSR0A&(1<<TXC0))&&(espera<10000)){
+      espera++;
+    }
+    else while(!(UCSR0A&(1<<TXC0));
+    //Borrar el indicador de transmicion completa:
+    UCSR0A|=(1<<TXC0);
+  
+
+    
+
+  }
+
+
+}
+
+
+
+
 int main(){
   int e=128;
   printf(\n %d,e);
