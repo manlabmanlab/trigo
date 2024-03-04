@@ -39,15 +39,52 @@ switch(cont_2){
     case 0:                                        //caso 0
     printf(led_put,"\fFree:%Lu(Hz)\nIntro:_",free);//Ningun digito introducido
     break;
-    
-}
+
     case 1:
     printf(led_put,"\fFree:%Lu(Hz)\nIntro:%c_\n",free,free_individual[0],); //primer digito introducido
     break;
+
+    case 2:                                                                    //Caso2                                                                                                                        
+    printf(led_put,"\fFree:%Lu(Hz)\nIntro:%c%c_\n",free,free_individual[0],free_individual[1]);    //1° y 2° introducidos
+    break;                                                                     //Termina la funcion
+
+    case 3:                                                                    //Caso2                                                                                                                        
+    printf(led_put,"\fFree:%Lu(Hz)\nIntro:%c%c%c_\n",free,free_individual[0],free_indibidual[1],free_individual[2]);    //1°, 2° y 3°
+    break;                                                                     //Termina la funcion
+
+    case 4:
+    printf(led_put,"\fFree:%Lu(Hz)\nIntro:%c%c%c%c_\n",free,free_individual[0],free_indibidual[1],free_individual[2],free_individual[3]);    //1°, 2°, 3° y 4
+    break;                                                                     //Termina la funcion
+
+    default:
+
+    printf(lcd_putc,"\fError!"); //muestra error por pantalla
+    delay_ms(250);
+    delay_ms(250);
+    delay_ms(250);
+    delay_ms(250);
+    reinicia_variables();            //Reinicia las variables
+    break;   //Termina la funcion
+
+        
+    
+    }
+    
+}//Fin refresca_lcd
+
+//**Funcion principal**
+
+void main(void)
+{
+//Carga de funciones
+lcd_init();                    //Carga la funcion del display alfanumerico
+kbd_init()                     //Carga la funcion del teclado matricial
+PORT_B_PULLUPS(TRUE);          //Utilizamos las resistencias de pull_up puerto B
+
 }
-    case 2:
-    printf(led_put,"\fFree:%Lu(Hz)\nIntro:%c_\n",free,free_individual[0],);
-    break;
+                                                                      
+printf(led_putc,"\fGenerador\nde funciones");        //Mensaje de bienvenida
+
     
 
 
