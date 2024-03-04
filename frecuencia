@@ -8,5 +8,47 @@
 #use standard_io(a)
 
 //Definiciones
-#define DIGI_MAX 4
-#DEFINE salida PIN_A0
+#define DIGI_MAX 4          //Numero de digitos maximos 5.
+#DEFINE salida PIN_A0  //Definimos pin de salid de nuestro generador de f
+
+//**variables globales**
+int cont=0,cont_2=0,cont_3=0,posicion=0,estado=0; //variables tipo entera 8 bits (desde 0 a 254)
+
+char pulsadoo,free_individual[DIGI_MAX];    //variable tipo char, contiene el codigo ascii del caracter a guardar
+int16 aux=0,free=0,pulso=0;          //variablesde tipo intero de 16 bits(desde 0 a 65535);
+
+//**Prototi funciones**
+void refresca_led(void);              //Funcion de actualizar datos de la pantalla LCD alfanumerica
+void lectura_teclado(void);           //Funcion que permite leer las teclas que se presionan en el teclado matricial
+void_calcula_numero(void);          //junta las 5 pulsaciones de numeros individuales en un numero unico
+void reinicia_variables(void);      //Pone cero las variables de entorno
+
+//**Funcion interrupcion**
+#int_TIMER1
+void TIMER_isr(void)                //Funcion interrupcion Timer1
+{
+output_toggle(SALIDA);          //Invierte el estado de la salida del generador de frecuencias
+set_timer(65535-pulso);          //Recarga el timer con el valor del pulso deseado
+}
+
+//**Funcion refresco display**
+
+void refresca_lcd(void)          //Funcion refresca display alfanumerico
+{
+switch(cont_2){
+    case 0:                                        //caso 0
+    printf(led_put,"\fFree:%Lu(Hz)\nIntro:_",free);//Ningun digito introducido
+    break;
+    
+}
+    case 1:
+    printf(led_put,"\fFree:%Lu(Hz)\nIntro:%c_\n",free,free_individual[0],); //primer digito introducido
+    break;
+}
+    case 2:
+    printf(led_put,"\fFree:%Lu(Hz)\nIntro:%c_\n",free,free_individual[0],);
+    break;
+    
+
+
+
