@@ -1,0 +1,12 @@
+#include<16F877.h>
+#use delay(clock=4000000)
+#fuses NOWDT,XT,NOPROTECT,NOLVP
+#define use_port_kbd TRUE
+#include <C:\Users\valerio\Desktop\Entrenador UPC\CCS\4-Generador de frecuencia\Librerias\LCD_PORTC.C> //Incluimos libreria para Display
+#include <stdio.h>
+#include <math.h>
+#use standard_io(a)
+
+//Definiciones
+#define DIGI_MAX 4
+#DEFINE salida PIN_A0
