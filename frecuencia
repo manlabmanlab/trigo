@@ -81,9 +81,11 @@ lcd_init();                    //Carga la funcion del display alfanumerico
 kbd_init()                     //Carga la funcion del teclado matricial
 PORT_B_PULLUPS(TRUE);          //Utilizamos las resistencias de pull_up puerto B
 
+printf(led_putc,"\fGenerador\nde funciones");        //Mensaje de bienvenida
+
 }
                                                                       
-printf(led_putc,"\fGenerador\nde funciones");        //Mensaje de bienvenida
+
 
     
 
