@@ -90,11 +90,27 @@ refresca_lcd();                 //Refresca el display
 
 reinicia_variables();           //Ponemos las variables a cero
 
-setup_timer_I(T1_internal T1_DIV_BY_1);          //iniciamos Timer 1, Oscilador interno y preescalar por 1
+setup_timer_1(T1_internal|T1_DIV_BY_1);          //iniciamos Timer 1, Oscilador interno y preescalar por 1
 
-disable_interrupts8int_timer1);
+disable_interrupts8int_timer1);             //No habilitamos las interrupciones del timer 1
+enable_interrupts(global);              //Si habilitamos las interrupciones globales
 
-}
+while(1){
+    if(estado==0)lectura_teclado();     //Estado 0, leemos teclado matricial
+    else if(estado==1)calcula_numero(); //Estado 1, une los diferentes numeros individuales
+    else if(estado==2){reinicia_variables(); //Estado 2, reinicia las variables
+                refresca_lcd()};            //Refrescamos display
+
+    else delay_us(1);                       //Esperamos 1 us
+
+    }//fin_while
+
+}//fin main
+
+//Funciones
+
+void_lectura_teclado(void)              //Funciones lectura teclado matricial
+
                                                                       
 
 
