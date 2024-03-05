@@ -82,8 +82,18 @@ kbd_init()                     //Carga la funcion del teclado matricial
 PORT_B_PULLUPS(TRUE);          //Utilizamos las resistencias de pull_up puerto B
 
 printf(led_putc,"\fGenerador\nde funciones");        //Mensaje de bienvenida
+delay_ms(255);
 delay_ms(250);
-delay_ms(200);
+delay_ms(250);
+delay_ms(250);
+refresca_lcd();                 //Refresca el display
+
+reinicia_variables();           //Ponemos las variables a cero
+
+setup_timer_I(T1_internal T1_DIV_BY_1);          //iniciamos Timer 1, Oscilador interno y preescalar por 1
+
+disable_interrupts8int_timer1);
+
 }
                                                                       
 
