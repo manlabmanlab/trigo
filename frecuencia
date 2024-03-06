@@ -110,6 +110,13 @@ while(1){
 //Funciones
 
 void_lectura_teclado(void)              //Funciones lectura teclado matricial
+{
+    pulsado=kbd_getc();                //Captura de la pulsacion y guardado para posteriormente verificar
+                                        //si es correcta la pulsacion dada
+if(cont_2==DIGI_MAX){estado=1;refresca_lcd();}        //Verificamos si es la ultima pulsaciony cambiamos de estado si es asi
+else if((pulsado=='0')||(pulsado=='1')||(pulsado=='2')||(pulsado=='3')||(pulsado=='4')||(pulsado=='5')(pulsado=='6')||(pulsado=='7')||(pulsado=='8')||
+(pulsado=='9'))
+}
 
                                                                       
 
