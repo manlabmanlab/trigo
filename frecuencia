@@ -117,13 +117,46 @@ if(cont_2==DIGI_MAX){estado=1;refresca_lcd();}        //Verificamos si es la ult
 else if((pulsado=='0')||(pulsado=='1')||(pulsado=='2')||(pulsado=='3')||(pulsado=='4')||(pulsado=='5')(pulsado=='6')||(pulsado=='7')||(pulsado=='8')||
 (pulsado=='9'))                 
                     //Filtramos para comprobar que sea un nuevo compredido entre el 1 y el 9
-{
+    {
     free_individual[cont_2=pulsado;]        //Guardamos el dato en el vector de frecuencias individuales
-}
+    cont_2++;
+    refresca_lcd();
+
+    }
+
+else if(pulsado=='*'){if(cont_2!=0){cont_2--;refresca_lcd();}//Filtramos para comprobar que se ha pulsado la tecla"*"y retrocedemos
+                                                            //un digito
+else if(pulsado=='#'){estado=1;refresca_lcd();}        //Filtramos para comprobar que se ha pulsado la tecla"#"y retrocedemos
+                                                        //al siguiente estado
+
+else delay_us(1);                                        //Pulsamos lus
+
 
 }
 
-                                                                      
+void calcula_numero(void)    //Calcular frecuencia a partir de pulsaciones individuales
+{
+    posicion=1;        //Iniciamos las variables para ser el calculo
+    aux=frec;        //Guardamos en la variable auxiliar la frecuencia anterior
+    frec=0;        //ponemos a cero la frecuencia
+    for (cont_3=0;cont_3<DIG_MAX;con_3++)    //REcorrido desde cero a digi_max=5 para colocar en lugar correspondiente
+                                                //cada digito individual
+    {
+    frec+=(frec_individual[cont_3]-48)*(pow(10,(DIG_MAX-posicion-(DIGI_MAX-cont_2))));    //Formula para calculo de la posicion
+    pisicion++;
+    frec_individual[cont_3]=48;    //Inicializamos vector free_individual; Codigo ascii(48)=0
+estado=2;                            //Cambiamos el estado
+if(frec==0){disable_interrupts(int_timer1);    //Si la frecuencia es cero paramos la salida
+    output_low(SALIDA);}        //Colocamos la salida a nivel logico 0
+                                //Filtramos para que la frecuencia seleccionada este entre 8 y 7KHz
+
+else if((8<=frec)&&(frec<=7000)){pulso=(500000 free);        //10. 10°62 Pasar a uS y hacemos dos semiperiodos
+                    set_timer(65535-pulso);                    //Iiniciamos el conteo del timer 1
+                    enable_interrupts(int_timer1);}            //Habilitamos las interrupciones
+else {frc==aux;                                        //Devolvemos la frecuencia almacenada en al variable axiliar
+
+    }
+}
 
 
     
