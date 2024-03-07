@@ -115,7 +115,12 @@ void_lectura_teclado(void)              //Funciones lectura teclado matricial
                                         //si es correcta la pulsacion dada
 if(cont_2==DIGI_MAX){estado=1;refresca_lcd();}        //Verificamos si es la ultima pulsaciony cambiamos de estado si es asi
 else if((pulsado=='0')||(pulsado=='1')||(pulsado=='2')||(pulsado=='3')||(pulsado=='4')||(pulsado=='5')(pulsado=='6')||(pulsado=='7')||(pulsado=='8')||
-(pulsado=='9'))
+(pulsado=='9'))                 
+                    //Filtramos para comprobar que sea un nuevo compredido entre el 1 y el 9
+{
+    free_individual[cont_2=pulsado;]        //Guardamos el dato en el vector de frecuencias individuales
+}
+
 }
 
                                                                       
