@@ -1,0 +1,18 @@
+#include <18F4550.h> //Librería para usar el PIC18F4550.
+#fuses HS,NOWDT,NOPROTECT,PUT,NOPBADEN //Configuración de fusibles.
+#use delay (clock=12000000) // Fosc = 12MHz.
+#byte tris_b=0xF93          // Define el registro tris b en la localidad 0xF93.
+#bit b0=0×F81.0             //Define el bit 0 en la localidad 0xF81.0.
+
+void main()                 //Funcion principal main
+{
+disable_interrupts (GLOBAL);//Deshabilita las interrupciones globales.
+tris_b=0x00;                //Configura el puerto B como salida
+do{                         //inicio del bucle infinito.
+b0=0;                       //El puerto RB0=0.
+delay_ms(500);              //Retardo 500 ms.
+b0=1;                       //El puerto RB0=1.
+delay_ms(500);              //Retardo 500 ms.
+}while(TRUE);               //Bucle infinito.
+      
+}                           //Fin del bucle main.
